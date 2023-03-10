@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        console.log("inside login init");
         this.form = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
     get f() { return this.form.controls; }
 
     onSubmit() {
+        console.log("inside login submit");
         this.submitted = true;
 
         // reset alerts on submit
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
+                    console.log("inside login next");
                     // get return url from query parameters or default to home page
                     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
                     this.router.navigateByUrl(returnUrl);

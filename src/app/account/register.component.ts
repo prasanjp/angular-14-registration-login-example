@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        console.log("inside register Init");
         this.form = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],

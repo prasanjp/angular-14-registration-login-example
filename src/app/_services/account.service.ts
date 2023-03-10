@@ -25,7 +25,8 @@ export class AccountService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        console.log("inside account service login");
+        return this.http.post<User>(`${environment.apiUrl}/auth-service/login`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
@@ -42,6 +43,7 @@ export class AccountService {
     }
 
     register(user: User) {
+        console.debug("inside register");
         return this.http.post(`${environment.apiUrl}/users/register`, user);
     }
 
